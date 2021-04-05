@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Update Nginx config to create a permanent redirection
+sudo apt-get update
+sudo apt-get install nginx -y
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+sed -i "/server_name _;/a rewrite ^/redirect_me/(.*)$ https://ddg.gg permanent;" /etc/nginx/sites-available/default
+service nginx restart
